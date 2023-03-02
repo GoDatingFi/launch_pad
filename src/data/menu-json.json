@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Swap",
+    "path": "/"
+  },
+  {
+    "name": "Liquidity",
+    "path": "/liquidity"
+  },
+  {
+    "name": "Vest",
+    "path": "/vest"
+  },
+  {
+    "name": "Vote",
+    "path": "/vote"
+  },
+  {
+    "name": "Bribe",
+    "path": "/bribe"
+  },
+  {
+    "name": "Rewards",
+    "path": "/rewards"
+  },
+  {
+    "name": "Migration",
+    "path": "/migration"
+  }
+]

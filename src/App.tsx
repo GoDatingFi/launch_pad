@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './index.css'
+import './styles/_index.scss'
+import 'antd/dist/reset.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ProtectedModule from './modules/ProtectedModule/ProtectedModule'
+import SwapPages from './pages/swap'
+import Liquidity from './pages/liquidity'
+import VestPages from './pages/vest'
+import VotePages from './pages/vote'
+import BribePages from './pages/bribe'
+import RewardsPage from './pages/rewards'
+import MigrationPages from './pages/migration'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route element={<ProtectedModule />}>
+          <Route path="/" element={<SwapPages />} />
+          <Route path="/liquidity" element={<Liquidity />} />
+          <Route path="/vest" element={<VestPages />} />
+          <Route path="/vote" element={<VotePages />} />
+          <Route path="/bribe" element={<BribePages />} />
+          <Route path="/rewards" element={<RewardsPage />} />
+          <Route path="/migration" element={<MigrationPages />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
