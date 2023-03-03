@@ -17,6 +17,7 @@ module.exports = {
         'btn-connect': 'hsla(0,0%,100%,.3)',
         'color-menu-light': '#525252',
         'color-menu-light-active': '#000',
+        "primary":'#5041E6'
       },
       padding: {
         menu: '10px 24px 13px',

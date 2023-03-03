@@ -1,0 +1,39 @@
+.swapList {
+  max-width: 560px;
+  width: 100%;
+  backdrop-filter: blur(22.5px) !important;
+  border: 1.5px solid #fff;
+  border-radius: 15px;
+  box-shadow: 10px 10px 30px 5px rgba(0, 0, 0, 0.1);
+  background: rgba(178, 200, 255, 0.2);
+}
+.swapItem {
+  border: 1px solid white;
+  width: 100%;
+  min-width: 509px;
+  height: 65px;
+  box-shadow: 10px 10px 30px 5px transparent !important;
+  border-radius: 15px;
+  margin: 4px 0;
+  background: hsla(0, 0%, 94.5%, 0.5);
+}
+.swapItem:nth-child(1) {
+  background: #fff;
+}
+.swapItem:last-child {
+  background-color: #5041e6;
+  color: #fff;
+  height: auto;
+  text-align: center;
+  padding: 12px 24px;
+  margin-top: 0.5rem;
+}
+@media (max-width: 560px) {
+  .swapItem {
+    min-width: auto;
+  }
+  .icon-swap {
+    width: 200px;
+    overflow: hidden;
+  }
+}

@@ -15,7 +15,7 @@ const LayoutDefault: React.FC<ILayoutDefaultProps> = ({
         <HeaderLayout />
       </Header>
       <Content className="relative min-h-screen p-content lg:p-content-mobile sm:px-5">
-        <div className="w-[calc(100%-180px)] bg-slate-400 m-main-center max-w-main-width  sm:w-auto">
+        <div className="w-[calc(100%-180px)]  m-main-center max-w-main-width  sm:w-auto">
           {children}
         </div>
       </Content>
