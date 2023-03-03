@@ -10,16 +10,16 @@ const LayoutDefault: React.FC<ILayoutDefaultProps> = ({
   children,
 }: ILayoutDefaultProps) => {
   return (
-    <Layout className="h-screen bg-backgroundLight bg-no-repeat bg-cover">
-      <Header className="bg-transparent fixed w-full z-50 top-0 left-0 sm:px-5">
+    <div className="h-screen layout-bg">
+      <div className="bg-transparent fixed w-full z-50 top-0 left-0 ">
         <HeaderLayout />
-      </Header>
-      <Content className="relative min-h-screen p-content lg:p-content-mobile sm:px-5">
+      </div>
+      <Content className="relative min-h-screen p-content lg:p-content-mobile ">
         <div className="w-[calc(100%-180px)]  m-main-center max-w-main-width  sm:w-auto">
           {children}
         </div>
       </Content>
-    </Layout>
+    </div>
   )
 }
 export default LayoutDefault
