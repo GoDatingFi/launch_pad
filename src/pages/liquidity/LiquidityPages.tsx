@@ -1,5 +1,7 @@
 import React from 'react'
-import 'flowbite';
+import 'flowbite'
+import SwapComponent from '../../components/layouts/Swap'
+import SwapModal from '../../components/layouts/SwapModal'
 
 const warningNotice =
   '⚠️ Notice: Remove moSOLID/WETH immediately, withdraw the pair. Monolith is discontinuing, you can split your moSOLID into veSOLID on alpha.mono.farm/convert -> "Split"⚠️⚠️'
@@ -11,6 +13,12 @@ const filterListOptions = [
   { text: ' Show Volatile Pools', id: 4 },
 ]
 
+const poolData = [
+  { id: 1, name: 'USDC/WETH Volatile Pool' },
+  { id: 2, name: 'USDC/WETH Volatile Pool' },
+  { id: 3, name: 'USDC/WETH Volatile Pool' },
+]
+
 const LiquidityPages = () => {
   return (
     <div className="swapWrapper ">
@@ -18,11 +26,15 @@ const LiquidityPages = () => {
         {/* <div className="text-yellow-200 rounded-full inline-block text-color-menu-light-active font-semibold p-4 ">
           {warningNotice}
         </div> */}
-        <h1 className="mb-4 text-xxl font-extrabold leading-none tracking-tight text-gray-900 md:text-xl lg:text-4xl dark:text-white">We invest in the world’s potential</h1>
+        <h1 className="mb-4 text-xxl font-extrabold leading-none tracking-tight text-gray-900 md:text-xl lg:text-4xl dark:text-white">
+          We invest in the world’s potential
+        </h1>
       </div>
 
       <div className="w-full h-24 mt-8 flex text-center">
         <button
+          data-modal-target="crypto-manage-pool-item"
+          data-modal-toggle="crypto-manage-pool-item"
           type="submit"
           className="w-64 mx-2 inline-flex items-center h-14 p-2 text-sm text-center 
           text-white transition duration-150 duration-300 ease-in-out rounded-xl outline-none 
@@ -44,7 +56,9 @@ const LiquidityPages = () => {
             />
           </svg>
 
-          <span className="hidden sm:inline-block text-center">Add Liquidity</span>
+          <span className="hidden sm:inline-block text-center">
+            Add Liquidity
+          </span>
         </button>
 
         <form className="w-full">
@@ -130,7 +144,6 @@ const LiquidityPages = () => {
                         {item.text}
                       </span>
                     </label>
-                    
                   ))}
                 </div>
               </div>
@@ -143,7 +156,7 @@ const LiquidityPages = () => {
       <div>
         <div className="relative overflow-x-auto mx-2">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded ">
-          <thead className="text-xs text-gray-200 uppercase bg-indigo-800/90 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-200 uppercase bg-indigo-800/90 dark:bg-gray-700 dark:text-gray-400">
               <tr className="h-12">
                 <th scope="col" className="px-6 py-3 rounded-tl-xl">
                   Pair
@@ -172,53 +185,38 @@ const LiquidityPages = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              {poolData.map((item, index) => (
+                <tr
+                  key={index}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
-                  USDC/WETH Volatile Pool
-                </th>
-                <td className="px-6 py-4">Silver</td>
-                <td className="px-6 py-4">Laptop</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-              </tr>
-
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  USDC/WETH Volatile Pool
-                </th>
-                <td className="px-6 py-4">Silver</td>
-                <td className="px-6 py-4">Laptop</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-              </tr>
-
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  USDC/WETH Volatile Pool
-                </th>
-                <td className="px-6 py-4">Silver</td>
-                <td className="px-6 py-4">Laptop</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-                <td className="px-6 py-4">$2999</td>
-              </tr>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {item.name}
+                  </th>
+                  <td className="px-6 py-4">Silver</td>
+                  <td className="px-6 py-4">Laptop</td>
+                  <td className="px-6 py-4">$2999</td>
+                  <td className="px-6 py-4">$2999</td>
+                  <td className="px-6 py-4">$2999</td>
+                  <td className="px-6 py-4">$2999</td>
+                  <td className="px-6 py-4">
+                    <button
+                      data-modal-target="crypto-manage-pool-item"
+                      data-modal-toggle="crypto-manage-pool-item"
+                      type="submit"
+                      className="mx-2 inline-flex items-center h-12 p-2 text-sm text-center 
+                      transition duration-150 duration-300 ease-in-out rounded-xl outline-none sm:py-2 sm:px-2"
+                    >
+                      <span className="text-indigo-800 font-medium sm:inline-block text-center">
+                        Manage
+                      </span>
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -271,6 +269,8 @@ const LiquidityPages = () => {
           </nav>
         </div>
       </div>
+
+      <SwapModal />
     </div>
   )
 }
