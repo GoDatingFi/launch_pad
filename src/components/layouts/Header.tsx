@@ -7,12 +7,12 @@ import ThemeSwitch from './themeSwitch'
 const HeaderLayout = () => {
   const navLinkClass = ({ isActive }: any) => {
     return isActive
-      ? 'text-color-menu-light-active  font-bold text-xl tab relative block py-1 px-4 text-center'
-      : 'tab relative block py-1 px-4'
+      ? 'w-18 text-indigo-800 font-bold text-sm block py-1 px-4 text-center'
+      : 'w-18 text-gray-500 block py-1 px-4 text-sm text-center'
   }
 
   return (
-    <header className=''>
+    <header className="">
       <input
         type="checkbox"
         name="hbr"
@@ -52,37 +52,29 @@ const HeaderLayout = () => {
                   className="relative overflow-hidden shadow-xl shadow-blue-900/5 dark:shadow-none h-12 grid grid-cols-8 gap-x-1 px-[3px] items-center border-gray-100 rounded-full bg-gray-50 hover:bg-gray-100 border text-gray-600 dark:text-gray-300 dark:border-opacity-60 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-800/60"
                 >
                   {dataMenuItem.map((item, index) => (
-                    <button
-                      role="tab"
-                      aria-selected="false"
-                      aria-controls="panel-2"
-                      id="tab-2"
-                      tabIndex={-1}
-                      title="tab item"
-                      className="tab relative block py-2.5 px-4 rounded-full hover:text-primary transition-opacity"
+                    <NavLink
+                      to={item.path}
+                      // className="flex items-center text-color-menu-light font-semibold leading-tight text-lg"
+                      className={navLinkClass}
                     >
-                      <NavLink
-                        to={item.path}
-                        // className="flex items-center text-color-menu-light font-semibold leading-tight text-lg"
-                        className={navLinkClass}
-                      >
-                        <span className="block w-max m-auto tracking-wider text-sm">
+                      
+                        <span className=" mx-auto tracking-wider">
                           {item.name}
                         </span>
-                      </NavLink>
-                    </button>
+                     
+                    </NavLink>
                   ))}
                 </div>
-                <div className='p-4'>
-                <ThemeSwitch /> 
+                <div className="p-4">
+                  <ThemeSwitch />
                 </div>
-                <div className='pt-2'>
-                <Button
-                  size="large"
-                  className="bg-main-style inline-block text-white font-semibold border-connect"
-                >
-                  Connect Wallet
-                </Button>
+                <div className="pt-2">
+                  <Button
+                    size="large"
+                    className="bg-main-style inline-block text-white font-semibold border-connect"
+                  >
+                    Connect Wallet
+                  </Button>
                 </div>
               </div>
             </div>

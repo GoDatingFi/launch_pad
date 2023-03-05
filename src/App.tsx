@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 import './styles/_index.scss'
-
+import 'flowbite';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProtectedModule from './modules/ProtectedModule/ProtectedModule'
 import SwapPages from './pages/swap'
