@@ -6,3 +6,9 @@ export enum StatusTransaction {
     FAILED = 'FAILED',
   }
   
+  export enum contractTypes {
+    NFT = 'nft',
+    MARKETPLACE = 'marketplace',
+    CHEST = 'chest',
+    LOCKER = 'locker',
+  }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.css'
 import './styles/_index.scss'
 import 'flowbite';
@@ -11,8 +11,21 @@ import VotePages from './pages/vote'
 import BribePages from './pages/bribe'
 import RewardsPage from './pages/rewards'
 import MigrationPages from './pages/migration'
+import { useDispatch } from 'react-redux';
 
 const App = () => {
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadContract = async () => {
+      // TODO  get Contract Address
+      setLoading(false)
+    }
+    // TODO load contract
+    // define get account
+  },[dispatch])
+  
   return (
     <BrowserRouter>
       <Routes>

@@ -1,10 +1,79 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../../static/images/logo.svg'
 import { Link, NavLink } from 'react-router-dom'
 import dataMenuItem from '../../data/menu-json.json'
 import { Button } from 'antd'
 import ThemeSwitch from './themeSwitch'
+import { formatWalletAddress, getAccount, roundingNumber } from '../../utils'
+import { useDispatch, useSelector } from 'react-redux'
+import Down from '../../static/icons/Chevron-Down.svg'
+import Up from '../../static/icons/Chevron-Up.svg'
+import * as actions from '../../actions'
+
+import { UPDATE_WEB3 } from '../../actions'
+import config from '../../config'
+
+// const { account, isWrongNetwork } = useSelector((state: any) => state)
+
+
+
 const HeaderLayout = () => {
+
+  const dispatch = useDispatch()
+  
+  const {
+    balanceOf,
+    account,
+    status,
+    chainId,
+    symbol,
+    connector,
+    notification,
+  } = useSelector((state: any) => state)
+  /// ---visible modal
+  const [showWallet, setShowWallet] = useState<boolean>(false)
+  const [showAccOptions, setShowAccOptions] = useState<boolean>(false)
+  const [showDisconnectModal, setShowDisconnectModal] = useState<boolean>(false)
+
+  // status connect wallet
+  const [initWallet, setInitWallet] = useState<boolean>(false)
+  const [errorWallet, setErrorWallet] = useState<boolean>(true)
+  const [wrongNetworkWallet, setWrongNetworkWallet] = useState<boolean>(false)
+
+  //notification
+  const [showNotification, setShowNotification] = useState<boolean>(false)
+  // const notificationRef = useClickOutside<HTMLDivElement>(() =>
+  //   setShowNotification(false)
+  // )
+
+  // const socketLink = config.isProduction
+  //   ? process.env.REACT_APP_MAINNET_SOCKET_URL
+  //   : process.env.REACT_APP_TESTNET_SOCKET_URL
+
+
+  useEffect(() => {
+    if (account) {
+      // TODO handle account
+    }
+  }, [account, dispatch])
+
+  useEffect(() => {
+    setErrorWallet(true)
+  }, [chainId])
+  useEffect(() => {
+    if (status === 'error') {
+      setErrorWallet(true)
+    }
+  }, [status])
+
+ 
+  const handleConnectWallet = async () => {
+    // current
+    setShowWallet(false)
+    setInitWallet(true)
+    await dispatch<any>(actions.web3Connect())
+  }
+
   const navLinkClass = ({ isActive }: any) => {
     return isActive
       ? 'w-18 text-indigo-800 font-bold text-sm block py-1 px-4 text-center'
@@ -253,7 +322,12 @@ const HeaderLayout = () => {
                       />
                     </svg>
                     <span className="flex-1 ml-3 whitespace-nowrap">
-                      MetaMask
+                    <Button
+                    size="small"
+                    onClick={handleConnectWallet}
+                    >
+                    MetaMask
+                  </Button>
                     </span>
                     <span className="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
                       Popular

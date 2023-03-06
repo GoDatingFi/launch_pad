@@ -50,7 +50,7 @@ export const web3Disconnect = () => async (dispatch: any) => {
   }
 
 
-  export const web3Connect = (typeWallet: string) => async (dispatch: any) => {
+  export const web3Connect = () => async (dispatch: any) => {
     try {
       if (!isMetaMaskInstalled()) {
         window.open('https://metamask.io/download.html')
@@ -64,6 +64,7 @@ export const web3Disconnect = () => async (dispatch: any) => {
       })
   
       await checkNetwork()
+      return
   
       // Request account access if needed
       const newAccounts = await window.ethereum.request({
